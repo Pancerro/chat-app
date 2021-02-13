@@ -1,0 +1,19 @@
+  <div class="container-card">
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #sidenav class="sidenav">
+          <app-user-list (closeSidenav)="closeSidenav()" [me]="me"></app-user-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="title">
+          <h1>
+            <button mat-button color="basic" (click)="sidenav.toggle()"><mat-icon>add</mat-icon></button>
+            <button mat-button color="basic" (click)="logout()"><mat-icon>logout</mat-icon></button>
+            Chatroom <mat-icon> chat</mat-icon>
+          </h1>
+        </div>
+        <div class="chatroom">
+          <app-chat [me]="me"></app-chat>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>

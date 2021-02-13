@@ -1,0 +1,27 @@
+<div>
+  <h2 class="title">Ustawienia pokoju <button mat-button color="basic" style="float: right" (click)="close()"><mat-icon>close</mat-icon></button>
+  </h2>
+  <mat-divider></mat-divider>
+  <mat-spinner *ngIf="spinner"></mat-spinner>
+  <mat-card class="card">
+      <button mat-button *ngIf="me?.status"  (click)="changeStatus()" class="green-btn"><mat-icon>face</mat-icon></button>
+      <button mat-button *ngIf="!me?.status" (click)="changeStatus()" class="red-btn"><mat-icon>face</mat-icon></button>
+      <span [style.color]="me?.colorInChat">{{me?.email}}</span>
+      <button mat-button color="basic" class="setting-btn" style="float: right" (click)="settings=!settings"><mat-icon>settings</mat-icon></button>
+    <ng-container *ngIf="settings">
+      <form [formGroup]="meForm">
+        <div>
+          <mat-form-field>
+            <input matInput type="color" formControlName="colorInChat" name="colorInChat" (change)="changeColor()">
+            <mat-placeholder>Wybierz swoj kolor na czacie!</mat-placeholder>
+          </mat-form-field>
+        </div>
+      </form>
+    </ng-container>
+  </mat-card>
+  <mat-card class="card" *ngFor="let user of userList">
+    <button mat-button *ngIf="user?.status" style="float: left" class="green-btn"><mat-icon>face</mat-icon></button>
+    <button mat-button *ngIf="!user?.status" style="float: left" class="red-btn"><mat-icon>face</mat-icon></button>
+    {{user?.email}}
+  </mat-card>
+</div>

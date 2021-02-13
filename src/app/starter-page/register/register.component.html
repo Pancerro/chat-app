@@ -1,0 +1,46 @@
+<div>
+  <mat-card class="my-card">
+    <mat-card-header>
+      <mat-card-title>Rejestracja</mat-card-title>
+      <mat-card-subtitle>Zarejestruj sie by moc korzystac z chatu grupowego!</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <form [formGroup]="registerForm">
+            <div>
+              <mat-form-field>
+                <input matInput type="text" required formControlName="email" name="email" >
+                <mat-placeholder>Email</mat-placeholder>
+                <mat-error>Email Musi Byc Poprawny</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password" name="password" >
+                <mat-placeholder>Hasło</mat-placeholder>
+                <mat-error>Błedne hasło</mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          <div>
+            <mat-form-field>
+              <input matInput [type]="hide ? 'password' : 'text'" required formControlName="confirmPassword" name="confirmPassword" >
+              <mat-placeholder>Powtorz haslo</mat-placeholder>
+              <mat-error>Błedne powtorzone hasło</mat-error>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div *ngIf="registerForm.errors && registerForm.get('confirmPassword')?.dirty"> Hasła nie są takie same</div>
+          <div class="register-success" *ngIf="registerSuccess">Rejestracja została ukonczona</div>
+        </form>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="basic" type="submit" [disabled]="registerForm.invalid"  (click)="registerUser()">Zarejestruj sie</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

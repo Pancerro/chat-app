@@ -1,0 +1,41 @@
+.chatroom {
+  border-radius: 0px !important;
+  height: 90%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.title {
+  height: 10%;
+  background-color: black;
+  color: white;
+  width: 50%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 850px) {
+  .chatroom {
+    width: 100%;
+    margin: 0;
+  }
+  .title {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+h1 {
+  padding-top: 5px;
+}
+.sidenav {
+  width: auto;
+  text-align: center;
+}
+
+.sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}

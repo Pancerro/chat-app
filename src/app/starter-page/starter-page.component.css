@@ -1,0 +1,17 @@
+.center {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.active {
+  background-color: black;
+  color: white;
+}
+
+:host .mat-raised-button {
+  border-radius: 0px !important;
+  width: 50%;
+}
+

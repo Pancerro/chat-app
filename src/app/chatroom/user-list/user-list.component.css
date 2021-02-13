@@ -1,0 +1,26 @@
+.card {
+  border-radius: 0px !important;
+  text-align: left;
+}
+.mat-spinner {
+  margin: 0 auto;
+}
+
+.green-btn {
+  color: green;
+}
+
+.red-btn {
+  color: red;
+}
+
+.mat-form-field {
+  margin-top: 10px;
+  width:100%;
+}
+.title {
+  background-color: black;
+  color: white;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}

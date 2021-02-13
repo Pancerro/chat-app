@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="chat-container"  #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div *ngFor="let message of messageList">
+      <div class="talk-bubble" [ngClass]="(me.email==message.email)?'right-message':'left-message'">
+        <div class="talk-text">
+          <p class="email" [style.color]="message.color">{{message.email}}
+            <mat-divider></mat-divider>
+          </p>
+          <p>{{message.message}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="input-container">
+    <form [formGroup]="messageForm" autocomplete="off">
+      <div>
+        <mat-form-field >
+          <input matInput type="text" required formControlName="message" (click)="readMessage()" name="message" >
+          <mat-placeholder>Aa...</mat-placeholder>
+          <button [disabled]="messageForm.invalid" mat-icon-button matSuffix color="basic" type="submit" (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>

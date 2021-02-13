@@ -1,0 +1,12 @@
+<div class="center">
+  <mat-card>
+    <div>
+      <button mat-raised-button [ngClass]="{'active': register}" color="basic" (click)="goRegister()">Rejestracja</button>
+      <button mat-raised-button [ngClass]="{'active': !register}" color="basic" (click)="goLogin()">Logowanie</button>
+    </div>
+    <div>
+      <app-register *ngIf="register"></app-register>
+      <app-login *ngIf="!register"></app-login>
+    </div>
+  </mat-card>
+</div>

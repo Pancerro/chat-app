@@ -1,0 +1,38 @@
+<div>
+  <mat-card class="my-card">
+    <mat-card-header>
+      <mat-card-title>Logowanie</mat-card-title>
+      <mat-card-subtitle>Zaloguj sie by moc korzystac z chatu grupowego!</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <form [formGroup]="loginForm">
+          <div>
+            <mat-form-field>
+              <input matInput type="text" required formControlName="email" name="email" >
+              <mat-placeholder>Email</mat-placeholder>
+              <mat-error>Email Musi Byc Poprawny</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password" name="password" >
+              <mat-placeholder>Hasło</mat-placeholder>
+              <mat-error>Błedne hasło</mat-error>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="wrong-login" *ngIf="wrongLogin">
+            <button mat-button color="basic" (click)="wrongLogin=!wrongLogin"><mat-icon>close</mat-icon></button>
+            Bledne dane logowanie
+          </div>
+        </form>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="basic" type="submit" [disabled]="loginForm.invalid" (click)="loginUser()">Zaloguj sie</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
