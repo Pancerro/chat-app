@@ -5,11 +5,15 @@
       </mat-sidenav>
       <mat-sidenav-content>
         <div class="title">
-          <h1>
-            <button mat-button color="basic" (click)="sidenav.toggle()"><mat-icon>add</mat-icon></button>
-            <button mat-button color="basic" (click)="logout()"><mat-icon>logout</mat-icon></button>
-            Chatroom <mat-icon> chat</mat-icon>
-          </h1>
+            <div>
+             <button mat-button color="basic" (click)="sidenav.toggle()"><mat-icon>add</mat-icon></button>
+             <button mat-button color="basic" (click)="logout()"><mat-icon>logout</mat-icon></button>
+            </div>
+            <div>
+              <h1>
+                Chatroom<mat-icon>chat</mat-icon>
+              </h1>
+            </div>
         </div>
         <div class="chatroom">
           <app-chat [me]="me"></app-chat>

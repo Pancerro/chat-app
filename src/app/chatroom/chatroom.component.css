@@ -1,12 +1,12 @@
 .chatroom {
   border-radius: 0px !important;
-  height: 90%;
+  height: 88%;
   width: 50%;
   margin: 0 auto;
 }
 
 .title {
-  height: 10%;
+  height: 12%;
   background-color: black;
   color: white;
   width: 50%;
@@ -24,7 +24,7 @@
 }
 
 h1 {
-  padding-top: 5px;
+  text-align:center;
 }
 .sidenav {
   width: auto;
