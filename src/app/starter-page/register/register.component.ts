@@ -46,7 +46,6 @@ export class RegisterComponent {
     this.auth.register(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value)
       .then((success) => {
       if (success) {
-        console.log(success);
         this.db.insertUser(user);
         this.registerSuccess = true;
       } else { this.registerFailed = true; }
