@@ -10,11 +10,12 @@ export class AuthService {
   constructor(private fireAuth: AngularFireAuth) {
   }
   readonly authState$: Observable<User | null> = this.fireAuth.authState;
-  public async register(email: string, password: string): Promise<void> {
+  public async register(email: string, password: string): Promise<boolean> {
     try {
       await this.fireAuth.createUserWithEmailAndPassword(email, password);
+      return true;
     } catch (error) {
-      window.alert(error);
+      return false;
     }
   }
   public login(email: string, password: string): Promise<auth.UserCredential> {

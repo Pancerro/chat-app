@@ -13,6 +13,7 @@ export class RegisterComponent {
   public registerForm: FormGroup;
   public hide = true;
   public registerSuccess = false;
+  public registerFailed = false;
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private db: DatabaseService) {
     this.registerForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -42,9 +43,14 @@ export class RegisterComponent {
       colorInChat : 'red',
       status: false
     };
-    this.auth.register(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value).then(() => {
-      this.db.insertUser(user);
-      this.registerSuccess = true;
+    this.auth.register(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value)
+      .then((success) => {
+      if (success) {
+        console.log(success);
+        this.db.insertUser(user);
+        this.registerSuccess = true;
+      } else { this.registerFailed = true; }
+
     });
   }
 

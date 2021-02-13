@@ -36,6 +36,8 @@
           </div>
           <div *ngIf="registerForm.errors && registerForm.get('confirmPassword')?.dirty"> Hasła nie są takie same</div>
           <div class="register-success" *ngIf="registerSuccess">Rejestracja została ukonczona</div>
+          <div class="register-success" *ngIf="registerFailed">Wystapil blad, sprawdz czy juz nie masz u nas konta :) </div>
+
         </form>
       </div>
     </mat-card-content>
