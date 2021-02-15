@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {DatabaseService} from '../service/database.service';
 import {AuthService} from '../service/auth.service';
 import {Router} from '@angular/router';
@@ -21,17 +21,29 @@ export class ChatroomComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.db.getUserList().subscribe((userList: User[]) =>
-    this.me = userList.filter(user => user.email === this.auth.getMe())[0]);
+    this.db.getUserList().subscribe((userList: User[]) => {
+    this.me = userList.filter(user => user.email === this.auth.getMe())[0];
+    });
+    setTimeout(() =>
+      this.db.updateUserStatus(this.me.email, true)
+    , 1000);
   }
   public closeSidenav(): void {
     this.sidenav.toggle();
   }
   public logout(): void {
-    this.auth.logout().then(() => this.router.navigate(['/starter-page']));
+    this.auth.logout().then(() => {
+      this.router.navigate(['/starter-page']);
+      this.db.updateUserStatus(this.me.email, false);
+      }
+    );
+  }
+  @HostListener('window:beforeunload')
+  unloadHandler(): void {
+    this.db.updateUserStatus(this.me?.email, false);
   }
   ngOnDestroy(): void {
-    this.logout();
+    this.db.updateUserStatus(this.me?.email, false);
   }
 }
 

@@ -1,4 +1,4 @@
-import {Component, HostListener, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {DatabaseService} from '../../service/database.service';
 import {User} from '../../model/user';
 import {AuthService} from '../../service/auth.service';
@@ -51,10 +51,6 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
   public close(): void {
     this.closeSidenav.next();
-  }
-  @HostListener('window:beforeunload')
-  unloadHandler(): void {
-    this.auth.logout().then(() => this.db.updateUserStatus(this.me?.email, false));
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

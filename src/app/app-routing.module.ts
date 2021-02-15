@@ -5,7 +5,7 @@ import {AuthGuard} from './guard/auth.guard';
 import {ChatroomComponent} from './chatroom/chatroom.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/starter-page', pathMatch: 'full' },
+  { path: '', redirectTo: '/chatroom', pathMatch: 'full' },
   { path: 'starter-page', component: StarterPageComponent},
   { path: 'chatroom', component: ChatroomComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/starter-page' }

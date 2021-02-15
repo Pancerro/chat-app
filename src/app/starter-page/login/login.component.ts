@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
 import { Router } from '@angular/router';
@@ -24,7 +24,6 @@ export class LoginComponent {
       ]))
     });
   }
-
   public loginUser(): void {
       this.auth.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value)
         .catch(() => this.wrongLogin = true)

@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./starter-page.component.css']
 })
 export class StarterPageComponent {
-  public register = true;
+  public register = false;
   constructor() { }
   public goLogin(): void {
     this.register = false;
